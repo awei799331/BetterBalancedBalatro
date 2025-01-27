@@ -1,5 +1,5 @@
 --- STEAMODDED HEADER
---- MOD_NAME: Better Balanced Balatro
+--- MOD_NAME: BBB
 --- MOD_ID: BetterBalancedBalatro
 --- MOD_AUTHOR: [awei799331]
 --- MOD_DESCRIPTION: Additional archetype support for enhanced cards, and hand types
@@ -14,6 +14,7 @@ SMODS.Atlas{
   px = 71, --width of one card
   py = 95 -- height of one card
 }
+
 SMODS.Joker{
   key = 'shiny_joker', --joker key
   loc_txt = { -- local text
@@ -31,24 +32,24 @@ SMODS.Joker{
       }]]
   },
   atlas = 'Jokers', --atlas' key
-  rarity = 1, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
+  rarity = 3, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
   --soul_pos = { x = 0, y = 0 },
-  cost = 0, --cost
+  cost = 12, --cost
   unlocked = true, --where it is unlocked or not: if true, 
   discovered = true, --whether or not it starts discovered
   blueprint_compat = true, --can it be blueprinted/brainstormed/other
-  eternal_compat = false, --can it be eternal
-  perishable_compat = false, --can it be perishable
+  eternal_compat = true, --can it be eternal
+  perishable_compat = true, --can it be perishable
   pos = {x = 0, y = 0}, --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
   config = { 
     extra = {
       chips = 0,
       mult = 0,
-      xmult = 1.0
+      Xmult = 1.0
     }
   },
   loc_vars = function(self,info_queue,center)
-      return {vars = {center.ability.extra.chips, center.ability.extra.mult, center.ability.extra.xmult}} --#1# is replaced with card.ability.extra.Xmult
+      return {vars = {center.ability.extra.chips, center.ability.extra.mult, center.ability.extra.Xmult}} --#1# is replaced with card.ability.extra.Xmult
   end,
   check_for_unlock = function(self, args)
       return true
@@ -67,7 +68,7 @@ SMODS.Joker{
         colour = G.C.PURPLE,
         chips = card.ability.extra.chips,
         mult = card.ability.extra.mult,
-        Xmult_mod = card.ability.extra.xmult
+        xmult = card.ability.extra.Xmult
       }
     end
 
@@ -76,7 +77,7 @@ SMODS.Joker{
       local edition_poll = pseudorandom(pseudoseed("Shiny Joker"))
   
       if edition_poll > 1 - 0.006*25 then
-        card.ability.extra.xmult = card.ability.extra.xmult * 1.50
+        card.ability.extra.Xmult = card.ability.extra.Xmult * 1.50
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.PURPLE,
@@ -105,6 +106,225 @@ SMODS.Joker{
   end,
 }
 
+SMODS.Joker{
+  key = 'diversity', --joker key
+  loc_txt = { -- local text
+      name = 'Diversity Specialist',
+      text = {
+        'The first scoring card of each ',
+        'unique enhancement gains {C:red}X#1#{}'
+      },
+      --[[unlock = {
+          'Be {C:legendary}cool{}',
+      }]]
+  },
+  atlas = 'Jokers', --atlas' key
+  rarity = 3, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
+  --soul_pos = { x = 0, y = 0 },
+  cost = 10, --cost
+  unlocked = true, --where it is unlocked or not: if true, 
+  discovered = true, --whether or not it starts discovered
+  blueprint_compat = true, --can it be blueprinted/brainstormed/other
+  eternal_compat = true, --can it be eternal
+  perishable_compat = true, --can it be perishable
+  pos = {x = 0, y = 0}, --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
+  config = { 
+    Xmult = 1.5
+  },
+  loc_vars = function(self,info_queue,center)
+      return {vars = {center.ability.Xmult}} --#1# is replaced with card.ability.extra.Xmult
+  end,
+  check_for_unlock = function(self, args)
+      return true
+  end,
+  calculate = function(self,card,context)
+    if context.individual and context.cardarea == G.play then
+      sendDebugMessage("Ran calculate", "Diversity Specialist")
+      local first_enhanced = nil
+      local enhancement = context.other_card.ability.effect
+
+      if not enhancement or enhancement == "" then
+        return
+      end
+
+      for i = 1, #context.scoring_hand do
+        if context.scoring_hand[i].ability.effect == enhancement then
+          first_enhanced = context.scoring_hand[i]
+          break
+        end
+      end
+
+      if first_enhanced ~= nil and first_enhanced == context.other_card then
+        return {
+          Xmult_mod = card.ability.Xmult
+        }
+      end
+    end
+  end,
+  in_pool = function(self,args)
+      --whether or not this card is in the pool, return true if it is, return false if its not
+      return true
+  end,
+}
+
+SMODS.Joker{
+  key = 'fried_egg', --joker key
+  loc_txt = { -- local text
+      name = 'Fried Egg',
+      text = {
+        'After two rounds, this egg hatches and ',
+        'Golden Goose may appear in the shop',
+        'Played rounds: {C:blue}#1#{}'
+      },
+      --[[unlock = {
+          'Be {C:legendary}cool{}',
+      }]]
+  },
+  atlas = 'Jokers', --atlas' key
+  rarity = 1, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
+  --soul_pos = { x = 0, y = 0 },
+  cost = 1, --cost
+  unlocked = true, --where it is unlocked or not: if true, 
+  discovered = true, --whether or not it starts discovered
+  blueprint_compat = false, --can it be blueprinted/brainstormed/other
+  eternal_compat = false, --can it be eternal
+  perishable_compat = true, --can it be perishable
+  pos = {x = 0, y = 0}, --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
+  config = {
+    hatch_time = 3,
+    played_rounds = 0
+  },
+  loc_vars = function(self,info_queue,center)
+    return {vars = {center.ability.played_rounds}} --#1# is replaced with card.ability.extra.Xmult
+  end,
+  check_for_unlock = function(self, args)
+      return true
+  end,
+  set_ability = function(self, card, initial, delay_sprites)
+    if G.GAME.pool_flags.fried_egg_hatched == nil then
+      G.GAME.pool_flags.fried_egg_hatched = false
+    end
+  end,
+  calculate = function(self,card,context)
+    if context.end_of_round and context.cardarea == G.jokers then
+      sendDebugMessage("Ran calculate", "Fried Egg")
+      card.ability.played_rounds = card.ability.played_rounds + 1
+      if card.ability.played_rounds >= card.ability.hatch_time then
+        G.GAME.pool_flags.fried_egg_hatched = true
+        card:remove()
+        return
+      end
+    end
+  end,
+  in_pool = function(self,args)
+      --whether or not this card is in the pool, return true if it is, return false if its not
+      return G.GAME.pool_flags.fried_egg_hatched == false
+  end,
+}
+
+SMODS.Joker{
+  key = 'golden_goose', --joker key
+  loc_txt = { -- local text
+      name = 'Golden Goose',
+      text = {
+        'Sells for {C:gold}$30{}'
+      },
+      --[[unlock = {
+          'Be {C:legendary}cool{}',
+      }]]
+  },
+  atlas = 'Jokers', --atlas' key
+  rarity = 1, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
+  --soul_pos = { x = 0, y = 0 },
+  cost = 1, --cost
+  unlocked = true, --where it is unlocked or not: if true, 
+  discovered = false, --whether or not it starts discovered
+  blueprint_compat = false, --can it be blueprinted/brainstormed/other
+  eternal_compat = false, --can it be eternal
+  perishable_compat = true, --can it be perishable
+  pos = {x = 0, y = 0}, --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
+  config = {
+    bonus_value = 24
+  },
+  set_ability = function(self, card, initial, delay_sprites)
+    if G.GAME.pool_flags.fried_egg_hatched == nil then
+      G.GAME.pool_flags.fried_egg_hatched = false
+    end
+    card.ability.extra_value = card.ability.bonus_value
+    card:set_cost()
+  end,
+  loc_vars = function(self,info_queue,center)
+    return {vars = {center.ability.played_rounds}} --#1# is replaced with card.ability.extra.Xmult
+  end,
+  check_for_unlock = function(self, args)
+    return G.GAME.pool_flags.fried_egg_hatched == true
+  end,
+  calculate = function(self,card,context)
+  end,
+  in_pool = function(self,args)
+    --whether or not this card is in the pool, return true if it is, return false if its not
+    return G.GAME.pool_flags.fried_egg_hatched == true
+  end,
+}
+
+SMODS.Joker{
+  key = 'procrastinator', --joker key
+  loc_txt = { -- local text
+      name = 'Procrastinator',
+      text = {
+        '{X:mult,C:white}X#1#{} Mult',
+        'When {C:attention}Small Blind{} or',
+        '{C:attention}Big Blind{} is selected,',
+        'lose {X:mult,C:white}X#2#{} Mult',
+      },
+      --[[unlock = {
+          'Be {C:legendary}cool{}',
+      }]]
+  },
+  atlas = 'Jokers', --atlas' key
+  rarity = 2, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
+  --soul_pos = { x = 0, y = 0 },
+  cost = 6, --cost
+  unlocked = true, --where it is unlocked or not: if true, 
+  discovered = true, --whether or not it starts discovered
+  blueprint_compat = true, --can it be blueprinted/brainstormed/other
+  eternal_compat = true, --can it be eternal
+  perishable_compat = true, --can it be perishable
+  pos = {x = 0, y = 0}, --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
+  config = { 
+    extra = {
+      Xmult = 4.0,
+      minus = 0.5
+    }
+  },
+  loc_vars = function(self,info_queue,center)
+    return {vars = {center.ability.extra.Xmult, center.ability.extra.minus}} --#1# is replaced with card.ability.extra.Xmult
+  end,
+  check_for_unlock = function(self, args)
+    return true
+  end,
+  calculate = function(self,card,context)
+    if context.joker_main then
+      return {
+        card = card,
+        xmult = card.ability.extra.Xmult,
+        -- message = "X"..card.ability.extra.Xmult,
+        colour = G.C.MULT,
+      }
+    elseif context.setting_blind and G.GAME.blind:get_type() ~= 'Boss' then
+      card.ability.extra.Xmult = math.max(1.0, card.ability.extra.Xmult - card.ability.extra.minus)
+      return {
+        card = card,
+        message = "-"..card.ability.extra.minus,
+        colour = G.C.RED
+      }
+    end
+  end,
+  in_pool = function(self,args)
+    --whether or not this card is in the pool, return true if it is, return false if its not
+    return G.GAME.round_resets.ante <= 4
+  end,
+}
 
 ----------------------------------------------
 ------------MOD CODE END----------------------
