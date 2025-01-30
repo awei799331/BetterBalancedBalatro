@@ -220,12 +220,19 @@ SMODS.Joker{
   end,
   calculate = function(self,card,context)
     if context.end_of_round and context.cardarea == G.jokers then
-      sendDebugMessage("Ran calculate", "Fried Egg")
       card.ability.extra.played_rounds = card.ability.extra.played_rounds + 1
       if card.ability.extra.played_rounds >= card.ability.extra.hatch_time then
         G.GAME.pool_flags.fried_egg_hatched = true
-        card:remove()
-        return
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, func = function()
+          card:remove()
+          return true
+        end}))
+      end
+      if G.GAME.pool_flags.fried_egg_hatched == true then
+        return {
+          message = 'Hatched!',
+          colour = G.C.GOLD
+        }
       end
     end
   end,
