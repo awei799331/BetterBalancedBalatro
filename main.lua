@@ -432,7 +432,7 @@ SMODS.Joker{
   config = { 
     extra = {
       skipped_blinds = 0,
-      
+
     }
   },
   loc_vars = function(self,info_queue,center)
@@ -464,7 +464,7 @@ SMODS.Joker{
   end,
 }
 
-
+-- this is a test
 SMODS.Joker{
   key = 'emme_joker', --joker key
   loc_txt = { -- local text
