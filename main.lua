@@ -150,10 +150,17 @@ SMODS.Joker{
     if context.cardarea == G.jokers and context.before then
       if #context.full_hand == 1 and (context.full_hand[1]:get_id() == 11 or context.full_hand[1]:get_id() == 12 or context.full_hand[1]:get_id() == 13) and G.GAME.current_round.hands_played == 0 then
         ease_dollars(5, true)
-        --card:remove()
         return {
           message = '$5',
           colour = G.C.GOLD
+        }
+      end
+    end
+    if context.destroy_card and context.cardarea == G.play then
+      sendDebugMessage('ya mum', 'robes')
+      if #context.full_hand == 1 and (context.full_hand[1]:get_id() == 11 or context.full_hand[1]:get_id() == 12 or context.full_hand[1]:get_id() == 13) and G.GAME.current_round.hands_played == 0 then
+        return {
+         remove = true
         }
       end
     end
