@@ -34,7 +34,7 @@ position = "at"
 
 
 payload = """function Card:get_chip_mult()
-    if #SMODS.find_card('j_bbb_emme_joker') < 1 then
+    if #SMODS.find_card('j_betterbalancedbalatro_emme_joker') < 1 then
         if self.debuff then return 0 end
         if self.ability.set == 'Joker' then return 0 end
         if self.ability.effect == "Lucky Card" then 
@@ -47,7 +47,7 @@ payload = """function Card:get_chip_mult()
         else  
             return self.ability.mult
         end
-    elseif #SMODS.find_card('j_bbb_emme_joker') >= 1 and self.ability.effect == "Lucky Card" then
+    elseif #SMODS.find_card('j_betterbalancedbalatro_emme_joker') >= 1 and self.ability.effect == "Lucky Card" then
         self.lucky_trigger = true
         return 20
     else
