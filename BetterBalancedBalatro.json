@@ -1,0 +1,14 @@
+{
+  "id": "betterbalancedbalatro",
+  "name": "Better Balanced Balatro",
+  "display_name": "BBB",
+  "author": ["108_Pho, Akrone"],
+  "description": "Bringing support for underappreciated archetypes and new challenges",
+  "prefix": "betterbalancedbalatro",
+  "main_file": "BetterBalancedBalatro.lua",
+  "priority": 0,
+  "badge_colour": "FFA500",
+  "badge_text_colour": "FFFFFF",
+  "version": "0.0.1",
+  "dependencies": ["Steamodded (>=1.0.0~ALPHA-1325b)"]
+}
