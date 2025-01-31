@@ -3,10 +3,10 @@ SMODS.Joker{
   loc_txt = { -- local text
       name = "Vanity",
       text = {
-        "Lose all discards except 1.",
-        "Earn {C:GOLD}$#1#{}",
+        "Lose all discards.",
+        "Earn {C:gold}$#1#{}",
         "for each hand lost.",
-        "Gain an additional {X:mult,C:white}X#1#{}",
+        "Gain an additional {C:gold}$#1#{}",
         "if you own {C:attention}Hubris{}"
       },
       --[[unlock = {
@@ -36,15 +36,19 @@ SMODS.Joker{
   end,
   calculate = function(self,card,context)
       if context.setting_blind and not self.getting_sliced then
-          local current_discards = G.GAME.current_round.discards_left
-          local discards_to_cut = current_discards - 1
-          ease_discards(discards_to_cut, true)
-          ease_dollars((discards_to_cut*center.ability.extra.dollars), true)
+          local discards_to_cut = G.GAME.current_round.discards_left
+          ease_discard(-discards_to_cut, true)
+          local ease_moneys = discards_to_cut*card.ability.extra.dollars
+          if #SMODS.find_card('j_betterbalancedbalatro_hubris') >= 1 then
+            ease_moneys = ease_moneys + 3
+          end
+          ease_dollars(ease_moneys, true)
           return {
           message = "-"..discards_to_cut.." Discards",
           colour = G.C.IMPORTANT
           }
-      end,
+      end
+    end,
   in_pool = function(self,args)
     return true
   end
