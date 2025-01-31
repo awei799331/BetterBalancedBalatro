@@ -21,6 +21,7 @@ local BBB_JOKER_FILES = {
   "tour_guide",
   "showboat",
   "hubris",
+  "vanity",
   "singularity",
   "emme",
   "alex",

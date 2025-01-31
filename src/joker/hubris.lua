@@ -46,8 +46,11 @@ SMODS.Joker{
         message = "-"..hands_to_cut.." Hands",
         colour = G.C.IMPORTANT
       }
-
+    
     elseif context.joker_main then
+      if #SMODS.find_card('j_betterbalancedbalatro_vanity') >= 1 then
+        card.ability.extra.currentXmult = card.ability.extra.currentXmult + 1
+      end
       return {
         xmult = card.ability.extra.currentXmult
       }
