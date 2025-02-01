@@ -1,37 +1,37 @@
-SMODS.Joker{
+SMODS.Joker {
   key = "diversity", --joker key
-  loc_txt = { -- local text
-      name = "Diversity Specialist",
-      text = {
-        "The first scoring card of each ",
-        "unique enhancement gains {C:red}X#1#{}"
-      },
-      --[[unlock = {
+  loc_txt = {        -- local text
+    name = "Diversity Specialist",
+    text = {
+      "The first scoring card of each ",
+      "unique enhancement gains {C:red}X#1#{}"
+    },
+    --[[unlock = {
           "Be {C:legendary}cool{}",
       }]]
   },
-  atlas = "Jokers", --atlas" key
-  rarity = 3, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
+  atlas = "Jokers",         --atlas" key
+  rarity = 3,               --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
   --soul_pos = { x = 0, y = 0 },
-  cost = 10, --cost
-  unlocked = true, --where it is unlocked or not: if true, 
-  discovered = true, --whether or not it starts discovered
-  blueprint_compat = true, --can it be blueprinted/brainstormed/other
-  eternal_compat = true, --can it be eternal
+  cost = 10,                --cost
+  unlocked = true,          --where it is unlocked or not: if true,
+  discovered = true,        --whether or not it starts discovered
+  blueprint_compat = true,  --can it be blueprinted/brainstormed/other
+  eternal_compat = true,    --can it be eternal
   perishable_compat = true, --can it be perishable
-  pos = {x = 4, y = 0}, --position in atlas, starts at 0, scales by the atlas" card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
+  pos = { x = 4, y = 0 },   --position in atlas, starts at 0, scales by the atlas" card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
   config = {
     extra = {
       Xmult = 1.5,
     }
   },
-  loc_vars = function(self,info_queue,center)
-      return {vars = {center.ability.extra.Xmult}} --#1# is replaced with card.ability.extra.Xmult
+  loc_vars = function(self, info_queue, center)
+    return { vars = { center.ability.extra.Xmult } } --#1# is replaced with card.ability.extra.Xmult
   end,
   check_for_unlock = function(self, args)
-      return true
+    return true
   end,
-  calculate = function(self,card,context)
+  calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       sendDebugMessage("Ran calculate", "Diversity Specialist")
 
@@ -64,8 +64,8 @@ SMODS.Joker{
       end
     end
   end,
-  in_pool = function(self,args)
-      --whether or not this card is in the pool, return true if it is, return false if its not
-      return true
+  in_pool = function(self, args)
+    --whether or not this card is in the pool, return true if it is, return false if its not
+    return true
   end,
 }
