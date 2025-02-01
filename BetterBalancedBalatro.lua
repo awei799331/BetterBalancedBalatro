@@ -13,6 +13,7 @@ local BBB_DECK_PATH = SRC .. "deck/"
 -- NO SPACES IN FILE NAMES!!!
 local BBB_JOKER_FILES = {
   "shiny_joker",
+  "clairvoyant",
   "robespierre",
   "fried_egg",
   "golden_goose",

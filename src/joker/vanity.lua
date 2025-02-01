@@ -5,7 +5,7 @@ SMODS.Joker{
       text = {
         "Lose all discards.",
         "Earn {C:gold}$#1#{} for each discard lost.",
-        "Gain an additional {C:gold}$#1#{}",
+        "Earn an additional {C:gold}$#1#{}",
         "if you own {C:attention}Hubris{}"
       },
       --[[unlock = {
