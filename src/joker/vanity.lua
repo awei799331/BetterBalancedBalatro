@@ -4,8 +4,7 @@ SMODS.Joker{
       name = "Vanity",
       text = {
         "Lose all discards.",
-        "Earn {C:gold}$#1#{}",
-        "for each hand lost.",
+        "Earn {C:gold}$#1#{} for each discard lost.",
         "Gain an additional {C:gold}$#1#{}",
         "if you own {C:attention}Hubris{}"
       },
