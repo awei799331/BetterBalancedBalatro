@@ -24,6 +24,7 @@ local BBB_JOKER_FILES = {
   "vanity",
   "singularity",
   "big_stack_bully",
+  "holy_order",
   "emme",
   "alex",
   "jack"
