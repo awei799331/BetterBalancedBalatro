@@ -17,6 +17,8 @@ local BBB_JOKER_FILES = {
   "robespierre",
   "fried_egg",
   "golden_goose",
+  "bonus_joker",
+  "wildcard_joker",
   "diversity",
   "procrastinator",
   "tour_guide",
