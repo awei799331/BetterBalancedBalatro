@@ -4,7 +4,7 @@ SMODS.Joker {
     name = "Diversity Specialist",
     text = {
       "The first scoring card of each ",
-      "unique enhancement gains {C:red}X#1#{}"
+      "unique enhancement gains {C:white,X:mult}X#1#{}"
     },
     --[[unlock = {
           "Be {C:legendary}cool{}",
@@ -33,22 +33,9 @@ SMODS.Joker {
   end,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
-      sendDebugMessage("Ran calculate", "Diversity Specialist")
-
+      local enhancement = GetEnhancement(context.other_card)
+      if enhancement == nil then return end
       local first_enhanced = nil
-      local enhancement = context.other_card.ability.effect
-
-      local found_enhancement = false
-      local enhancements_map = get_current_pool("Enhanced")
-      for i, k in pairs(enhancements_map) do
-        if G.P_CENTERS[k].effect == enhancement then
-          found_enhancement = true
-          break
-        end
-      end
-
-      if not found_enhancement then return end
-
       for i = 1, #context.scoring_hand do
         if context.scoring_hand[i].ability.effect == enhancement then
           first_enhanced = context.scoring_hand[i]
