@@ -29,13 +29,8 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.ending_shop then
       if not (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit) then
-        sendDebugMessage(
-          "cards " ..
-          #G.consumeables.cards .. " " .. G.GAME.consumeable_buffer .. " " .. G.consumeables.config.card_limit,
-          "Wildcard Joker")
         return
       end
-      sendDebugMessage("here", "Wildcard Joker")
       G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
       G.E_MANAGER:add_event(Event({
         func = (function()

@@ -12,6 +12,7 @@ local BBB_DECK_PATH = SRC .. "deck/"
 -- Loads the jokers in this order. This affects the order they show up in the collection table in game!
 -- NO SPACES IN FILE NAMES!!!
 local BBB_JOKER_FILES = {
+  "climber",
   "shiny_joker",
   "clairvoyant",
   "robespierre",
