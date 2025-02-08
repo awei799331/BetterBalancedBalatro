@@ -22,6 +22,7 @@ local BBB_JOKER_FILES = {
   "wildcard_joker",
   "diversity",
   "procrastinator",
+  "one_eyed_jack",
   "tour_guide",
   "showboat",
   "hubris",
