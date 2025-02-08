@@ -4,7 +4,7 @@ SMODS.Joker {
     name = "Wild Tarot",
     text = {
       "{C:green}#1# in #2#{} chance for each",
-      "played {C:attention}Wild Card{} to create a",
+      "played {C:attention}Wild {}card to create a",
       "{C:tarot}Tarot{} card when scored",
       "{C:inactive}(Must have room)",
     },

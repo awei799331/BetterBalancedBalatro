@@ -25,6 +25,7 @@ local BBB_JOKER_FILES = {
   "wildcard_joker",
   "one_eyed_jack",
   "wild_tarot",
+  "wild_retrigger",
   "shiny_joker",
   "singularity",
   "procrastinator",
