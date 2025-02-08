@@ -3,9 +3,8 @@ SMODS.Joker {
   loc_txt = {         -- local text
     name = "Jack",
     text = {
-      "{C:purple}Death{} always appears",
-      "in {C:attention}Arcana Packs{}.",
-      "Whenever you use {C:purple}Death{} create",
+      "{C:purple}Death{} always appears in {C:attention}Arcana Packs{}.",
+      "Whenever you use {C:purple}Death{}, create",
       "a permanent copy of the chosen",
       "card and draw it to hand"
     },
@@ -30,7 +29,39 @@ SMODS.Joker {
 
 
 
-
+  calculate = function(self, card, context)
+    if context.using_consumeable and context.consumeable.ability.name == "Death" then
+      local rightmost =G.hand.highlighted[1]
+      for i = 1, #G.hand.highlighted do
+        if G.hand.highlighted[i].T.x > rightmost.T.x then
+          rightmost = G.hand.highlighted[i]
+        end
+      end
+      local new_card = copy_card(rightmost, nil, nil, G.playing_card)
+      new_card.states.visible = nil
+      func = G.E_MANAGER:add_event(Event({
+        func = (function()
+          new_card:add_to_deck()
+          G.deck.config.card_limit = G.deck.config.card_limit + 1
+          table.insert(G.playing_cards, new_card)
+          G.hand:emplace(new_card)
+          return true
+        end)
+      }))
+      G.E_MANAGER:add_event(Event({
+        func = function()
+            new_card:start_materialize()
+            return true
+        end
+    })) 
+    return {
+        message = localize('k_copied_ex'),
+        colour = G.C.CHIPS,
+        card = card,
+        playing_cards_created = {true}
+    }
+    end
+  end,
   --THIS JOKER NEEDS FUNCTIONALITY STILL, DOES NOT WORK
 
 
