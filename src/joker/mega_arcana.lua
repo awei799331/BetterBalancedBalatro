@@ -3,8 +3,8 @@ SMODS.Joker {
   loc_txt = {          -- local text
     name = "Mega Arcana",
     text = {
-      "Gain a {C:attention}Mega Arcana Tag{}",
-      "when a {C:attention}Boss Blind{} is defeated"
+      "Gain a {C:attention}Charm Tag{}",
+      "when {C:attention}Boss Blind{} is defeated"
     },
   },
   atlas = "Jokers",         --atlas" key

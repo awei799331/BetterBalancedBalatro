@@ -3,8 +3,8 @@ SMODS.Joker {
   loc_txt = {         -- local text
     name = "Jack",
     text = {
-      "{C:purple}Death{} appears twice as often",
-      "and may appear multiple times.",
+      "{C:purple}Death{} always appears",
+      "in {C:attention}Arcana Packs{}.",
       "Whenever you use {C:purple}Death{} create",
       "a permanent copy of the chosen",
       "card and draw it to hand"
