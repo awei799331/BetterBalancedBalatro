@@ -4,8 +4,8 @@ SMODS.Joker {
     name = "Jack",
     text = {
       "{C:purple}Death{} always appears in {C:attention}Arcana Packs{}.",
-      "Whenever you use {C:purple}Death{}, create",
-      "a permanent copy of the chosen",
+      "Whenever you use {C:purple}Death{} create",
+      "a permanent copy of the right",
       "card and draw it to hand"
     },
     --[[unlock = {
