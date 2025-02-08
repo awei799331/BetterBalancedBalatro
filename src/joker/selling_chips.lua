@@ -5,7 +5,7 @@ SMODS.Joker {
     text = {
       "Whenever a card is {C:attention}sold{},",
       "This Joker gains {C:chips}+#1#{} Chips",
-      "times the value of the sold card",
+      "for each dollar gained",
       "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
     },
   },

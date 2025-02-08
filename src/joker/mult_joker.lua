@@ -5,7 +5,7 @@ SMODS.Joker {
     text = {
       "{C:chips}+#1#{} Chips for every {C:attention}Mult Card{}",
       "in your {C:attention}full deck",
-      "{C:inactive}(Currently {C:chips} +#2# {C:inactive} Chips)"
+      "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
     },
   },
   atlas = "Jokers",         --atlas" key

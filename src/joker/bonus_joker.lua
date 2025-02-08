@@ -5,7 +5,7 @@ SMODS.Joker {
     text = {
       "{C:mult}+#1#{} Mult for every {C:attention}Bonus Card{}",
       "in your {C:attention}full deck",
-      "{C:inactive}(Currently {C:mult} +#2# {C:inactive} Mult)"
+      "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
     },
   },
   atlas = "Jokers",         --atlas" key
@@ -20,7 +20,7 @@ SMODS.Joker {
   pos = { x = 4, y = 1 },   --position in atlas, starts at 0, scales by the atlas" card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
   config = {
     extra = {
-      mult = 3,
+      mult = 4,
       bonus_tally = 0
     }
   },
