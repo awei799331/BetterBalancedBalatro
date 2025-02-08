@@ -4,7 +4,7 @@ SMODS.Joker {
     name = "Diversity Specialist",
     text = {
       "The first scoring card of each ",
-      "unique enhancement gains {C:white,X:mult}X#1#{}"
+      "unique enhancement gives {C:white,X:mult}X#1#{}"
     },
     --[[unlock = {
           "Be {C:legendary}cool{}",

@@ -34,7 +34,7 @@ SMODS.Joker {
 
 
   calculate = function(self, card, context)
-    if context.using_consumeable then
+    if context.using_consumeable and context.consumeable.ability.set == "Tarot" then
       return {
         message = "+8 Chips",
         colour = G.C.ATTENTION
