@@ -8,6 +8,7 @@ local BBB_JOKER_PATH = SRC .. "joker/"
 local BBB_CHALLENGE_PATH = SRC .. "challenge/"
 local BBB_SPECTRAL_PATH = SRC .. "spectral/"
 local BBB_DECK_PATH = SRC .. "deck/"
+local BBB_HOOK_PATH = SRC .. "hooks/"
 
 -- Loads the jokers in this order. This affects the order they show up in the collection table in game!
 -- NO SPACES IN FILE NAMES!!!
@@ -41,6 +42,10 @@ local BBB_JOKER_FILES = {
   "jack"
 }
 
+local BBB_HOOK_FILES = {
+  "emme"
+}
+
 -- Load a file using its path
 local function loadFile(path)
   local chunk = NFS.load(path)
@@ -55,7 +60,7 @@ local function loadFile(path)
 end
 
 -- Load all jokers in the joker_list in order
-local function loadJokers(folder, joker_list)
+local function loadFolder(folder, joker_list)
   for i, file_prefix in pairs(joker_list) do
     local file = folder .. file_prefix .. ".lua"
     loadFile(file)
@@ -71,7 +76,8 @@ function Main()
   }
 
   loadFile(SRC .. "utils.lua")
-  loadJokers(BBB_JOKER_PATH, BBB_JOKER_FILES)
+  loadFolder(BBB_JOKER_PATH, BBB_JOKER_FILES)
+  loadFolder(BBB_HOOK_PATH, BBB_HOOK_FILES)
 end
 
 Main()
