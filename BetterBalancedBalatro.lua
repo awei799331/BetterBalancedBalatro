@@ -34,6 +34,7 @@ local BBB_JOKER_FILES = {
   "procrastinator",
   "tour_guide",
   "diversity",
+  "palindrome",
   "big_stack_bully",
   "holy_order",
   "emme",
