@@ -35,6 +35,7 @@ local BBB_JOKER_FILES = {
   "procrastinator",
   "tour_guide",
   "diversity",
+  "plumber",
   "big_stack_bully",
   "holy_order",
   "emme",
@@ -43,7 +44,9 @@ local BBB_JOKER_FILES = {
 }
 
 local BBB_HOOK_FILES = {
-  "emme"
+  "emme",
+  "totem",
+  "plumber"
 }
 
 -- Load a file using its path
