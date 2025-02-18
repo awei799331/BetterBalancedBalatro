@@ -31,9 +31,12 @@ local BBB_JOKER_FILES = {
   "wild_tarot",
   "wild_retrigger",
   "shiny_joker",
+  "totem",
   "singularity",
   "procrastinator",
   "tour_guide",
+  "skip_hand",
+  "skip_retrigger",
   "diversity",
   "big_stack_bully",
   "holy_order",
@@ -43,7 +46,8 @@ local BBB_JOKER_FILES = {
 }
 
 local BBB_HOOK_FILES = {
-  "emme"
+  "emme",
+  "totem"
 }
 
 -- Load a file using its path
