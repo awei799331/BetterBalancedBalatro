@@ -32,7 +32,6 @@ local BBB_JOKER_FILES = {
   "wild_retrigger",
   "shiny_joker",
   "totem",
-  "singularity",
   "procrastinator",
   "tour_guide",
   "skip_hand",
@@ -44,7 +43,7 @@ local BBB_JOKER_FILES = {
   "big_stack_bully",
   "holy_order",
   "emme",
-  "alex",
+  "singularity",
   "jack"
 }
 

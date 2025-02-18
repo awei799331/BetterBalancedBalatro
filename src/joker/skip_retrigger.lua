@@ -40,7 +40,7 @@ SMODS.Joker {
       card.ability.extra.skipped = true
     elseif context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
       card.ability.extra.skipped = false
-    elseif context.repetition and context.cardarea == G.play then
+    elseif context.repetition and context.cardarea == G.play and card.ability.extra.skipped then
       return {
         message = localize('k_again_ex'),
         repetitions = card.ability.extra.triggers,
