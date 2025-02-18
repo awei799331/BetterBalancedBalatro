@@ -80,3 +80,7 @@ function TableToString(tbl, depth, indent)
   toStr = toStr .. "\n" .. string.rep("  ", indent) .. "}"
   return toStr
 end
+
+function Ternary(cond, T, F)
+  if cond then return T else return F end
+end
