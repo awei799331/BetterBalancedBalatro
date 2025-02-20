@@ -46,10 +46,17 @@ SMODS.Joker {
                   trigger = 'before',
                   delay = 0.0,
                   func = (function()
-                    local tarot = create_card('Tarot', G.consumeables, nil, nil, nil, nil, nil, self.key)
-                    tarot:add_to_deck()
-                    G.consumeables:emplace(tarot)
-                    G.GAME.consumeable_buffer = 0
+                    local tarot = SMODS.add_card({
+                      type = "Tarot",
+                      area = G.consumeables,
+                      legendary = nil,
+                      rarity = nil,
+                      skip_materialize = nil,
+                      soulable = nil,
+                      key = nil,
+                      key_append = "wild_tarot"
+                    })
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
                     return true
                   end)
                 }))

@@ -47,7 +47,7 @@ SMODS.Joker {
                     G.P_CENTERS.c_lovers.key,
                 key_append = "wildcard_joker"
               })
-              G.GAME.consumeable_buffer = 0
+              G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
               return true
             end
           }))
